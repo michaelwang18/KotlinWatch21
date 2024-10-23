@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        timeDisplayer =
 
 
 
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         var runnable: Runnable = Runnable { }
         runnable = Runnable {
             time++;
-            displayTime()
+            displayTime(time)
             handler.postDelayed(runnable,10)
 
         }
@@ -40,8 +41,10 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-fun displayTime(){
-    var hours = time/360000
+fun displayTime(timeNow: Int){
+    var hours = (timeNow/360000).toInt()
+    var minutes = (timeNow - (timeNow % 6000))/6000
+    var deciseconds = timeNow % 100;
 
 
 }
